@@ -17,7 +17,7 @@ import spring.kafka.demo.simplest.config.D1Topics;
 public class MainKafkaSpringSimplestTests {
 
 	@Autowired
-	private D1MessagePublisher internalPublisher;
+	private D1MessagePublisher<String> internalPublisher;
 
     @Autowired
     private D1KafkaProducer kafkaProducer;
@@ -31,7 +31,7 @@ public class MainKafkaSpringSimplestTests {
 
     	//When
 	    List<String> items = List.of("a1", "b2", "c3");
-	    items.forEach(i->kafkaProducer.sendMessage(D1Topics.TOPIC_1, i));
+	    items.forEach(i->kafkaProducer.send(D1Topics.TOPIC_1, i));
 	    Thread.sleep(2000);
 
 	    //Then

@@ -7,15 +7,15 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.SubmissionPublisher;
 
 @Component
-public class D1MessagePublisher {
+public class D1MessagePublisher<T> {
 
-   private final SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
+   private final SubmissionPublisher<T> publisher = new SubmissionPublisher<>();
 
-	void send(String message){
+	void send(T message){
 		publisher.submit(message);
 	}
 
-	public void addSubscriber(Subscriber<String> subscriber){
+	public void addSubscriber(Subscriber<T> subscriber){
 	    publisher.subscribe(subscriber);
 	}
 

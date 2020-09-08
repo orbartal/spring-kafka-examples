@@ -22,7 +22,7 @@ import spring.kafka.demo.simplest.consumer.D1MessagePublisher;
 public class MainKafkaSpringProducersTests {
 
 	@Autowired
-	private D1MessagePublisher internalPublisher;
+	private D1MessagePublisher<String> internalPublisher;
 
     @Autowired
     private D1KafkaPropertiesFactory propertiesFactory;

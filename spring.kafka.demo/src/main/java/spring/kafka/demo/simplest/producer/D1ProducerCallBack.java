@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-public class D1ProducerCallBack implements ListenableFutureCallback<SendResult<Integer, String>> {
+public class D1ProducerCallBack<K, U> implements ListenableFutureCallback<SendResult<K, U>> {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(D1ProducerCallBack.class);
 
@@ -18,7 +18,7 @@ public class D1ProducerCallBack implements ListenableFutureCallback<SendResult<I
 	}
 
 	@Override
-	public void onSuccess(SendResult<Integer, String> result) {
+	public void onSuccess(SendResult<K, U> result) {
 		LOGGER.info("sent message='{}' to topic='{}' with offset={}", message, topic, result.getRecordMetadata().offset());
 	}
 
