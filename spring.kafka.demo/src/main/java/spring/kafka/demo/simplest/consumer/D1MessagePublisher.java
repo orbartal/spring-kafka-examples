@@ -11,7 +11,7 @@ public class D1MessagePublisher<T> {
 
    private final SubmissionPublisher<T> publisher = new SubmissionPublisher<>();
 
-	void send(T message){
+   public void send(T message){
 		publisher.submit(message);
 	}
 
