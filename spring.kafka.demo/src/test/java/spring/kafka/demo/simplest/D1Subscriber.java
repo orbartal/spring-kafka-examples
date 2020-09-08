@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
-public class MySubscriber<T> implements Subscriber<T> {
+public class D1Subscriber<T> implements Subscriber<T> {
     private Subscription subscription;
     public List<T> consumedElements = new LinkedList<>();
  

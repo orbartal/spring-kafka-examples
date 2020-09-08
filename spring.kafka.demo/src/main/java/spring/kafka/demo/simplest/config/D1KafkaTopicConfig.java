@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.config.TopicBuilder;
 
 @Configuration
-class KafkaTopicConfig {
+class D1KafkaTopicConfig {
 
   @Bean
   public NewTopic topic1() {
-    return TopicBuilder.name(Topics.TOPIC_1).build();
+    return TopicBuilder.name(D1Topics.TOPIC_1).build();
   }
 
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.SubmissionPublisher;
 
 @Component
-public class MyMessagePublisher {
+public class D1MessagePublisher {
 
    private final SubmissionPublisher<String> publisher = new SubmissionPublisher<>();
 

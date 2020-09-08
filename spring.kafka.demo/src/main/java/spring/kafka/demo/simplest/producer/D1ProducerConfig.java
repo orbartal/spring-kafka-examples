@@ -14,7 +14,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 
 @Configuration
-public class SenderConfig {
+public class D1ProducerConfig {
 
     @Value("${kafka.bootstrap.servers}")
     private String bootstrapServers;
