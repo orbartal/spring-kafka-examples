@@ -17,21 +17,26 @@ import spring.kafka.demo.simplest.config.D1Topics;
 public class MainKafkaSpringSimplestTests {
 
 	@Autowired
-	private D1MessagePublisher myMessagePublisher;
+	private D1MessagePublisher internalPublisher;
 
     @Autowired
-    private D1KafkaProducer sender;
+    private D1KafkaProducer kafkaProducer;
 
     @Test
     public void test1() throws Exception {
+
+    	//Given
     	D1Subscriber<String> subscriber = new D1Subscriber<>();
-    	myMessagePublisher.addSubscriber(subscriber);
+    	internalPublisher.addSubscriber(subscriber);
 
+    	//When
 	    List<String> items = List.of("a1", "b2", "c3");
-	    items.forEach(i->sender.sendMessage(D1Topics.TOPIC_1, i));
-
+	    items.forEach(i->kafkaProducer.sendMessage(D1Topics.TOPIC_1, i));
 	    Thread.sleep(2000);
-	    Assert.assertTrue(subscriber.consumedElements.containsAll(items));
-	    Assert.assertTrue(items.containsAll(subscriber.consumedElements));
+
+	    //Then
+	    List<String> actual = subscriber.getConsumedElements();
+	    Assert.assertTrue(actual.containsAll(items));
+	    Assert.assertTrue(items.containsAll(actual));
     }
 }

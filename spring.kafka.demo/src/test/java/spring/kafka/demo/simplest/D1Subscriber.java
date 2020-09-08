@@ -1,14 +1,16 @@
 package spring.kafka.demo.simplest;
 
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Flow.Subscriber;
 import java.util.concurrent.Flow.Subscription;
 
 public class D1Subscriber<T> implements Subscriber<T> {
+
     private Subscription subscription;
-    public List<T> consumedElements = new LinkedList<>();
+    private List<T> consumedElements = new LinkedList<>();
  
     @Override
     public void onSubscribe(Subscription subscription) {
@@ -31,5 +33,9 @@ public class D1Subscriber<T> implements Subscriber<T> {
 	@Override
 	public void onComplete() {
 		System.out.println("Done");
+	}
+	
+	public List<T> getConsumedElements() {
+		return Collections.unmodifiableList(consumedElements);
 	}
 }
