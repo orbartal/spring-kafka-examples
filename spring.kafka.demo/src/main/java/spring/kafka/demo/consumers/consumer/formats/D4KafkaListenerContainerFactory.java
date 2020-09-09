@@ -1,4 +1,4 @@
-package spring.kafka.demo.consumers.consumer;
+package spring.kafka.demo.consumers.consumer.formats;
 
 import java.util.Map;
 

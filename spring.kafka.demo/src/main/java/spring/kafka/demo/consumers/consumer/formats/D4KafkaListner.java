@@ -1,4 +1,4 @@
-package spring.kafka.demo.consumers.consumer;
+package spring.kafka.demo.consumers.consumer.formats;
 
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.factory.annotation.Autowired;

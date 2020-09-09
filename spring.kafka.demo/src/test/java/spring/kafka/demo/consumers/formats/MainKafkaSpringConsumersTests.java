@@ -1,4 +1,4 @@
-package spring.kafka.demo.consumers;
+package spring.kafka.demo.consumers.formats;
 
 import java.util.List;
 import java.util.stream.Collectors;
