@@ -6,4 +6,5 @@ public class D1Topics {
 	public static final String TOPIC_3 = "topic_3_.payload";
 	public static final String TOPIC_4 = "topic_4_.consumers_formats";
 	public static final String TOPIC_5 = "topic_5_.consumers_groups";
+	public static final String TOPIC_6 = "topic_6_.consumers_filters";
 }
