@@ -30,4 +30,10 @@ public class MessageDto {
                 ", identifier=" + identifier +
                 '}';
     }
+    
+    
+    //{"identifier":0,"message":"a"}
+    public String toJson() {
+        return "{\"identifier\":" + identifier + "," + "\"message\":"+ "\""+ message + "\"}";
+    }
 }
