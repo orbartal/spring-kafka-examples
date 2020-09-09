@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import spring.kafka.demo.consumers.consumer.groups.D5StringPublisher1;
-import spring.kafka.demo.consumers.consumer.groups.D5StringPublisher2;
-import spring.kafka.demo.consumers.consumer.groups.D5StringPublisher3;
+import spring.kafka.demo.common.config.C1Topics;
+import spring.kafka.demo.consumers.groups.publishers.D5StringPublisher1;
+import spring.kafka.demo.consumers.groups.publishers.D5StringPublisher2;
+import spring.kafka.demo.consumers.groups.publishers.D5StringPublisher3;
 import spring.kafka.demo.simplest.D1Subscriber;
-import spring.kafka.demo.simplest.config.D1Topics;
 import spring.kafka.demo.simplest.producer.D1KafkaProducer;
 
 @RunWith(SpringRunner.class)
@@ -49,7 +49,7 @@ public class MainKafkaSpringConsumersGroupsTests {
 
     	//When
     	List<String> items = List.of("a1", "b2", "c3");
- 	    items.forEach(i->kafkaProducer.send(D1Topics.TOPIC_5, i));
+ 	    items.forEach(i->kafkaProducer.send(C1Topics.TOPIC_5, i));
  	    Thread.sleep(2000);
 
 	    //Then

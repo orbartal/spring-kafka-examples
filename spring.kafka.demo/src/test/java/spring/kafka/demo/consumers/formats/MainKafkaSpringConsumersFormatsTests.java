@@ -11,13 +11,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import spring.kafka.demo.consumers.publishers.D4BytesPublisher;
-import spring.kafka.demo.consumers.publishers.D4MessageDtoPublisher;
-import spring.kafka.demo.consumers.publishers.D4StringPublisher;
-import spring.kafka.demo.payload.model.MessageDto;
-import spring.kafka.demo.payload.producer.D3KafkaProducer;
+import spring.kafka.demo.common.config.C1Topics;
+import spring.kafka.demo.common.model.MessageDto;
+import spring.kafka.demo.consumers.formats.publishers.D4BytesPublisher;
+import spring.kafka.demo.consumers.formats.publishers.D4MessageDtoPublisher;
+import spring.kafka.demo.consumers.formats.publishers.D4StringPublisher;
+import spring.kafka.demo.payload.producer.D2KafkaProducer;
 import spring.kafka.demo.simplest.D1Subscriber;
-import spring.kafka.demo.simplest.config.D1Topics;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -35,7 +35,7 @@ public class MainKafkaSpringConsumersFormatsTests {
 
 	//kafka
     @Autowired
-    private D3KafkaProducer kafkaProducer;
+    private D2KafkaProducer kafkaProducer;
 
     @Test
     public void test1() throws Exception {
@@ -51,7 +51,7 @@ public class MainKafkaSpringConsumersFormatsTests {
     	//When
     	int size = 3;
 	    List<String> items = List.of("a", "b", "c");
-	    IntStream.range(0, size).forEach(i->kafkaProducer.send(D1Topics.TOPIC_4, new MessageDto(i, items.get(i))));
+	    IntStream.range(0, size).forEach(i->kafkaProducer.send(C1Topics.TOPIC_4, new MessageDto(i, items.get(i))));
 	    List<String> expected = IntStream.range(0, size).boxed().map(i->new MessageDto(i, items.get(i)).toJson()).sorted().collect(Collectors.toList());
 	    Thread.sleep(5000);
 

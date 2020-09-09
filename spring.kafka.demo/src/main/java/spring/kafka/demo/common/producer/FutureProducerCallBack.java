@@ -1,18 +1,18 @@
-package spring.kafka.demo.simplest.producer;
+package spring.kafka.demo.common.producer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.support.SendResult;
 import org.springframework.util.concurrent.ListenableFutureCallback;
 
-public class D1ProducerCallBack<K, U> implements ListenableFutureCallback<SendResult<K, U>> {
+public class FutureProducerCallBack<K, U> implements ListenableFutureCallback<SendResult<K, U>> {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(D1ProducerCallBack.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(FutureProducerCallBack.class);
 
 	private String topic;
 	private String message;
 
-	public D1ProducerCallBack(String topic, String message) {
+	public FutureProducerCallBack(String topic, String message) {
 		this.topic = topic;
 		this.message = message;
 	}

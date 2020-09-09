@@ -1,4 +1,4 @@
-package spring.kafka.demo.payload.model;
+package spring.kafka.demo.common.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -25,14 +25,9 @@ public class MessageDto {
 
     @Override
     public String toString() {
-        return "PracticalAdvice::toString() {" +
-                "message='" + message + '\'' +
-                ", identifier=" + identifier +
-                '}';
+        return "MessageDto = " + toJson();
     }
-    
-    
-    //{"identifier":0,"message":"a"}
+
     public String toJson() {
         return "{\"identifier\":" + identifier + "," + "\"message\":"+ "\""+ message + "\"}";
     }

@@ -1,4 +1,4 @@
-package spring.kafka.demo.simplest.consumer;
+package spring.kafka.demo.consumers.groups.factory;
 
 import org.springframework.stereotype.Component;
 
@@ -6,9 +6,10 @@ import spring.kafka.demo.common.config.C1KafkaPropertiesFactory;
 import spring.kafka.demo.common.consumer.listener.KafkaListenerContainerFactoryString;
 
 @Component
-public class D1KafkaListenerContainerFactory extends KafkaListenerContainerFactoryString {
+public class D5KafkaListenerContainerFactory extends KafkaListenerContainerFactoryString {
 
-	public D1KafkaListenerContainerFactory(C1KafkaPropertiesFactory propertiesFactory) {
+	public D5KafkaListenerContainerFactory(C1KafkaPropertiesFactory propertiesFactory) {
 		super(propertiesFactory);
 	}
+
 }

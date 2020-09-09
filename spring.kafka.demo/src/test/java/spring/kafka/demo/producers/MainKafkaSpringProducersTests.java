@@ -12,9 +12,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import spring.kafka.demo.common.config.C1KafkaPropertiesFactory;
+import spring.kafka.demo.common.config.C1Topics;
 import spring.kafka.demo.simplest.D1Subscriber;
-import spring.kafka.demo.simplest.config.D1KafkaPropertiesFactory;
-import spring.kafka.demo.simplest.config.D1Topics;
 import spring.kafka.demo.simplest.consumer.D1StringPublisher;
 
 @RunWith(SpringRunner.class)
@@ -25,7 +25,7 @@ public class MainKafkaSpringProducersTests {
 	private D1StringPublisher internalPublisher;
 
     @Autowired
-    private D1KafkaPropertiesFactory propertiesFactory;
+    private C1KafkaPropertiesFactory propertiesFactory;
 
     @Test
     public void testMultiProducers() throws Exception {
@@ -41,7 +41,7 @@ public class MainKafkaSpringProducersTests {
 	    List<String> messages = IntStream.range(0, size).boxed().map(i->UUID.randomUUID().toString()).sorted().collect(Collectors.toList());
 	    System.out.println(messages);
 
-	    IntStream.range(0, size).forEach(i->producers.get(i).sendMessage(D1Topics.TOPIC_1, messages.get(i)));
+	    IntStream.range(0, size).forEach(i->producers.get(i).sendMessage(C1Topics.TOPIC_1, messages.get(i)));
 	    Thread.sleep(5000);
 
 	    //Then

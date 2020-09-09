@@ -10,21 +10,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import spring.kafka.demo.payload.consumer.D3MessageDtoPublisher;
-import spring.kafka.demo.payload.model.MessageDto;
-import spring.kafka.demo.payload.producer.D3KafkaProducer;
+import spring.kafka.demo.common.config.C1Topics;
+import spring.kafka.demo.common.model.MessageDto;
+import spring.kafka.demo.payload.consumer.D2MessageDtoPublisher;
+import spring.kafka.demo.payload.producer.D2KafkaProducer;
 import spring.kafka.demo.simplest.D1Subscriber;
-import spring.kafka.demo.simplest.config.D1Topics;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MainKafkaSpringPayloadTests {
 
 	@Autowired
-	private D3MessageDtoPublisher internalPublisher;
+	private D2MessageDtoPublisher internalPublisher;
 
     @Autowired
-    private D3KafkaProducer kafkaProducer;
+    private D2KafkaProducer kafkaProducer;
 
     @Test
     public void testPayload() throws Exception {
@@ -35,7 +35,7 @@ public class MainKafkaSpringPayloadTests {
 
     	//When
 	    List<String> items = List.of("a1", "b2", "c3");
-	    items.forEach(i->kafkaProducer.send(D1Topics.TOPIC_3, new MessageDto(1, i)));
+	    items.forEach(i->kafkaProducer.send(C1Topics.TOPIC_2, new MessageDto(1, i)));
 	    Thread.sleep(2000);
 
 	    //Then

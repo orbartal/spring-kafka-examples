@@ -1,31 +1,21 @@
-package spring.kafka.demo.payload.producer;
+package spring.kafka.demo.common.producer;
 
 import java.util.Map;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.core.DefaultKafkaProducerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.SendResult;
-import org.springframework.stereotype.Component;
 import org.springframework.util.concurrent.ListenableFuture;
 
-import spring.kafka.demo.payload.model.MessageDto;
-import spring.kafka.demo.simplest.config.D1KafkaPropertiesFactory;
-import spring.kafka.demo.simplest.producer.D1ProducerCallBack;
+import spring.kafka.demo.common.config.C1KafkaPropertiesFactory;
+import spring.kafka.demo.common.model.MessageDto;
 
-@Component
-public class D3KafkaProducer {
-
-	@Autowired
-	private D1KafkaPropertiesFactory propertiesFactory;
+public class KafkaProducerDto {
 
 	private KafkaTemplate<Integer, MessageDto> kafkaTemplate;
 
-	@PostConstruct
-	private void postConstruct() {
+	public KafkaProducerDto(C1KafkaPropertiesFactory propertiesFactory) {
 		Map<String, Object> producerConfigs = propertiesFactory.getProducerProperties2();
 		ProducerFactory<Integer, MessageDto> producerFactory = new DefaultKafkaProducerFactory<>(producerConfigs);
 		kafkaTemplate = new KafkaTemplate<Integer, MessageDto>(producerFactory);
@@ -33,7 +23,7 @@ public class D3KafkaProducer {
 
 	public void send(String topic, MessageDto message) {
 		ListenableFuture<SendResult<Integer, MessageDto>> future = kafkaTemplate.send(topic, message);
-		future.addCallback(new D1ProducerCallBack<>(topic, message.toString()));
+		future.addCallback(new FutureProducerCallBack<>(topic, message.toString()));
 	}
 
 }
