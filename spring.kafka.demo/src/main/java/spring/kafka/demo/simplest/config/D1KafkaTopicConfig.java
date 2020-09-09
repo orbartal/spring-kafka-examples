@@ -24,5 +24,9 @@ class D1KafkaTopicConfig {
   public NewTopic topic4() {
     return TopicBuilder.name(D1Topics.TOPIC_4).build();
   }
+  @Bean
+  public NewTopic topic5() {
+    return TopicBuilder.name(D1Topics.TOPIC_5).build();
+  }
 
 }

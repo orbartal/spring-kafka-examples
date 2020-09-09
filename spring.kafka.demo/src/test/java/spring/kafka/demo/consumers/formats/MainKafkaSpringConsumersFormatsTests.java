@@ -21,7 +21,7 @@ import spring.kafka.demo.simplest.config.D1Topics;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class MainKafkaSpringConsumersTests {
+public class MainKafkaSpringConsumersFormatsTests {
 
 	//internal publishers
 	@Autowired

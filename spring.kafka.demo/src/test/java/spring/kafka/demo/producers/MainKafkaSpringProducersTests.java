@@ -15,14 +15,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 import spring.kafka.demo.simplest.D1Subscriber;
 import spring.kafka.demo.simplest.config.D1KafkaPropertiesFactory;
 import spring.kafka.demo.simplest.config.D1Topics;
-import spring.kafka.demo.simplest.consumer.D1MessagePublisher;
+import spring.kafka.demo.simplest.consumer.D1StringPublisher;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class MainKafkaSpringProducersTests {
 
 	@Autowired
-	private D1MessagePublisher<String> internalPublisher;
+	private D1StringPublisher internalPublisher;
 
     @Autowired
     private D1KafkaPropertiesFactory propertiesFactory;
@@ -42,7 +42,7 @@ public class MainKafkaSpringProducersTests {
 	    System.out.println(messages);
 
 	    IntStream.range(0, size).forEach(i->producers.get(i).sendMessage(D1Topics.TOPIC_1, messages.get(i)));
-	    Thread.sleep(2000);
+	    Thread.sleep(5000);
 
 	    //Then
 	    List<String> actual = subscriber.getConsumedElements().stream().sorted().collect(Collectors.toList());

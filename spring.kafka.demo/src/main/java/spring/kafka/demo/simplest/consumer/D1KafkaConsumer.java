@@ -11,11 +11,11 @@ import spring.kafka.demo.simplest.config.D1Topics;
 public class D1KafkaConsumer {
 
 	@Autowired
-	private D1MessagePublisher<String> myMessagePublisher;
+	private D1StringPublisher publisher;
 
 	@KafkaListener(topics = D1Topics.TOPIC_1, containerFactory = "d1KafkaListenerContainerFactory")
 	public void receiveMessage(String message) {
-		myMessagePublisher.send(message);
+		publisher.send(message);
 	}
 	
 	
